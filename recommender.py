@@ -27,6 +27,7 @@ def recommender_system():
         search = st.checkbox('Submit', key='submit')
        # try:
         if search:
+            st.snow()
             current_dir = Path(__file__).parent
             df_path = current_dir/'FullData.csv'
             response_msg=None
@@ -110,13 +111,12 @@ def recommender_system():
                         iterator += 1
                         time.sleep(0.1)
                         my_bar.progress(iterator/20)
-                        print(iterator)
                     else:
                         break
                 except Exception as e:
                     print(e)
                     continue
-            print(iterator)
+            my_bar.progress(100)
             if "level_0" in final_reviews.columns:
                 final_reviews.drop('level_0', axis=1, inplace=True)
             final_reviews = final_reviews[final_reviews['Rates'] != "Not Available"]
