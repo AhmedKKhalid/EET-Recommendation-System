@@ -2,7 +2,6 @@ from datetime import datetime, timedelta, date
 import time
 import requests
 import xmltodict
-import win32com.client as win32
 import numpy as np
 import pandas as pd
 import warnings
