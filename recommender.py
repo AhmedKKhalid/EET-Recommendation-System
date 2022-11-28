@@ -11,6 +11,8 @@ import streamlit as st
 import HotelAvail as hv
 import time
 pd.options.mode.chained_assignment = None  # default='warn'
+from pathlib import Path
+
 
 
 def recommender_system():
@@ -19,12 +21,16 @@ def recommender_system():
     end_date = str(st.text_input("Enter End Date Pls...(Ex : 2022-11-26)"))
     nationality = str(st.text_input("Enter Nationality Pls...(Ex : EG)"))
     pax = str(st.text_input("Number of Pax Pls...(Ex : 2)"))
+
     try:
+
         search = st.checkbox('Submit', key='submit')
        # try:
         if search:
+            current_dir = Path(__file__).parent
+            df_path = current_dir/'FullData.csv'
             response_msg=None
-            dfX = pd.read_csv(r"C:\Users\int3\Desktop\All Data\FullData.csv", encoding="ISO-8859-1", low_memory=False)
+            dfX = pd.read_csv(df_path, encoding="ISO-8859-1", low_memory=False)
             df = dfX.copy()
 
             df['R Lat'] = df['R Lat'].str[:-1].astype(float)
