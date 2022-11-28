@@ -47,7 +47,6 @@ login = st.sidebar.checkbox('Login')
 if login:
     try:
       user = auth.sign_in_with_email_and_password(email, password)
-      st.snow()
       recommender.recommender_system()
 
     except Exception as e:
